@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Gestión de Árboles</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome para íconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        .card {
+            border-radius: 15px;
+            box-shadow: 0 6px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        .tree-img {
+            height: 200px;
+            object-fit: cover;
+            border-radius: 10px 10px 0 0;
+        }
+        .navbar-brand {
+            font-weight: 700;
+            color: #2e7d32 !important;
+        }
+        .btn-success {
+            background-color: #2e7d32;
+            border-color: #2e7d32;
+        }
+        .section-title {
+            color: #2e7d32;
+            border-bottom: 2px solid #2e7d32;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+        .step-box {
+            background-color: #e8f5e9;
+            border-left: 4px solid #2e7d32;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 0 5px 5px 0;
+        }
+    </style>
+</head>
+<body>
+    <!-- Barra de navegación -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm mb-4">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <i class="fas fa-tree me-2"></i>Sistema de Árboles
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#lista">Listado</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#agregar">Agregar</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mb-5">
+        <!-- Sección de listado -->
+        <section id="lista" class="mb-5">
+            <h2 class="section-title"><i class="fas fa-list me-2"></i>Listado de Árboles</h2>
+            <div class="row" id="arboles-container">
+                <!-- Aquí se cargarán dinámicamente los árboles -->
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100">
+                        <img src="https://images.unsplash.com/photo-1517120026326-ad50b5c0ea6e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" class="card-img-top tree-img" alt="Roble">
+                        <div class="card-body">
+                            <h5 class="card-title">Roble</h5>
+                            <p class="card-text">
+                                <strong>Tipo de flor:</strong> Amentos<br>
+                                <strong>Dureza madera:</strong> 4 (Janka)
+                            </p>
+                        </div>
+                        <div class="card-footer bg-white">
+                            <button class="btn btn-sm btn-outline-primary me-2 edit-btn">
+                                <i class="fas fa-edit"></i> Editar
+                            </button>
+                            <button class="btn btn-sm btn-outline-danger delete-btn">
+                                <i class="fas fa-trash"></i> Eliminar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100">
+                        <img src="https://images.unsplash.com/photo-1526397751294-331021109fbd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" class="card-img-top tree-img" alt="Pino">
+                        <div class="card-body">
+                            <h5 class="card-title">Pino</h5>
+                            <p class="card-text">
+                                <strong>Tipo de flor:</strong> Conos<br>
+                                <strong>Dureza madera:</strong> 3 (Janka)
+                            </p>
+                        </div>
+                        <div class="card-footer bg-white">
+                            <button class="btn btn-sm btn-outline-primary me-2 edit-btn">
+                                <i class="fas fa-edit"></i> Editar
+                            </button>
+                            <button class="btn btn-sm btn-outline-danger delete-btn">
+                                <i class="fas fa-trash"></i> Eliminar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100">
+                        <img src="https://images.unsplash.com/photo-1525268337453-4461369b133f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" class="card-img-top tree-img" alt="Cedro">
+                        <div class="card-body">
+                            <h5 class="card-title">Cedro</h5>
+                            <p class="card-text">
+                                <strong>Tipo de flor:</strong> Conos<br>
+                                <strong>Dureza madera:</strong> 5 (Janka)
+                            </p>
+                        </div>
+                        <div class="card-footer bg-white">
+                            <button class="btn btn-sm btn-outline-primary me-2 edit-btn">
+                                <i class="fas fa-edit"></i> Editar
+                            </button>
+                            <button class="btn btn-sm btn-outline-danger delete-btn">
+                                <i class="fas fa-trash"></i> Eliminar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección para agregar/editar árbol -->
+        <section id="agregar" class="mb-5">
+            <h2 class="section-title"><i class="fas fa-plus-circle me-2"></i>Agregar Nuevo Árbol</h2>
+            <div class="row">
+                <div class="col-lg-8 mx-auto">
+                    <div class="card shadow-sm">
+                        <div class="card-body">
+                            <form id="arbol-form">
+                                <input type="hidden" id="arbol-id">
+                                <div class="mb-3">
+                                    <label for="nombre" class="form-label">Nombre común</label>
+                                    <input type="text" class="form-control" id="nombre" required>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <label for="tipo-flor" class="form-label">Tipo de flor</label>
+                                        <input type="text" class="form-control" id="tipo-flor" required>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label for="dureza" class="form-label">Dureza de madera (Escala Janka)</label>
+                                        <input type="number" class="form-control" id="dureza" min="1" max="10" required>
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="descripcion" class="form-label">Descripción</label>
+                                    <textarea class="form-control" id="descripcion" rows="3"></textarea>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="imagen" class="form-label">Imagen del árbol (URL)</label>
+                                    <input type="url" class="form-control" id="imagen" placeholder="https://ejemplo.com/imagen.jpg">
+                                </div>
+                                <div class="d-grid gap-2">
+                                    <button type="submit" class="btn btn-success">
+                                        <i class="fas fa-save me-2"></i>Guardar Árbol
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-4 mt-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h5><i class="fas fa-university me-2"></i></h5>
+                    <p></p>
+                    <p></p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <h5></h5>
+                    <p></p>
+                    <p></p>
+                    <p></p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS y Popper.js -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Simulación de funcionalidad CRUD en frontend
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.getElementById('arbol-form');
+            const container = document.getElementById('arboles-container');
+            const editBtns = document.querySelectorAll('.edit-btn');
+            const deleteBtns = document.querySelectorAll('.delete-btn');
+            
+            // Ejemplo de manejo del formulario - en una implementación real esto sería manejado por el backend
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                alert('En una implementación real, esto enviaría los datos al servidor Spring Boot para procesarlos');
+                // Aquí iría la lógica AJAX para enviar datos al backend
+            });
+            
+            // Ejemplo de manejo de botones de edición
+            editBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const card = this.closest('.card');
+                    const title = card.querySelector('.card-title').textContent;
+                    alert(`En una implementación real, esto cargaría los datos de "${title}" para editar`);
+                });
+            });
+            
+            // Ejemplo de manejo de botones de eliminación
+            deleteBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const card = this.closest('.card');
+                    const title = card.querySelector('.card-title').textContent;
+                    if (confirm(`¿Estás seguro de eliminar "${title}"? Esto también afectaría la base de datos en una
