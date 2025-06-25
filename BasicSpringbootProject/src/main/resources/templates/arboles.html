@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="layout :: contenido">
+<body>
+<div class="container mt-4">
+    <h2>Lista de árboles</h2>
+    <a href="/nuevo" class="btn btn-primary">Nuevo Árbol</a>
+    <table class="table table-striped mt-3">
+        <thead>
+            <tr>
+                <th>Nombre</th><th>Flor</th><th>Madera</th><th>Descripción</th><th>Imagen</th><th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="a : ${listaArboles}">
+                <td th:text="${a.nombreComun}"></td>
+                <td th:text="${a.tipoFlor}"></td>
+                <td th:text="${a.durezaMadera}"></td>
+                <td th:text="${a.descripcion}"></td>
+                <td><img th:src="@{${a.rutaImagen}}" width="100"/></td>
+                <td>
+                    <a th:href="@{'/editar/' + ${a.id}}" class="btn btn-warning btn-sm">Editar</a>
+                    <a th:href="@{'/eliminar/' + ${a.id}}" class="btn btn-danger btn-sm">Eliminar</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
